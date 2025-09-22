@@ -23,6 +23,11 @@
 	--main-font: 'Roboto', sans-serif;
 	--secondary-font: 'Raleway', sans-serif;
 }
+.animations {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 200ms;
+	transition-property: color, background-color, fill, box-shadow, opacity;
+}
 
 * {
 	box-sizing: border-box;
@@ -115,21 +120,34 @@ ul {
 	font-size: 14px;
 }
 
-.active-link {
-	color: var(--brand-color);
+.active-link,
+.portfolio-active-link {
+	color: var(--band-color);
 	position: relative;
 }
 
 .active-link:hover::after {
-	border-radius: 2px;
-	width: 48px;
-	display: inline-block;
-	top: 43px;
 	content: '';
-	left: 0;
 	position: absolute;
-	height: 4px;
+	display: inline-block;
+	border-radius: 2px;
+	top: 43px;
 	background-color: var(--brand-color);
+	width: 48px;
+	height: 4px;
+	left: 0;
+}
+
+.portfolio-active-link:hover::after {
+	content: '';
+	position: absolute;
+	display: inline-block;
+	left: 0;
+	border-radius: 2px;
+	top: 43px;
+	background-color: var(--brand-color);
+	width: 78px;
+	height: 4px;
 }
 
 .header-icon {
