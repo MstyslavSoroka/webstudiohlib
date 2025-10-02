@@ -170,7 +170,7 @@ ul {
 			var(--hero-overlay),
 			var(--hero-overlay)
 		),
-		url(../images/main-page/hero-bg.jpg) center / cover no-repeat;
+		url(../images/studio/hero-bg.jpg) center / cover no-repeat;
 	padding-top: 200px;
 }
 
@@ -406,22 +406,22 @@ ul {
 }
 
 .antena::before {
-	background-image: url(../images/main-page/antenna.png);
+	background-image: url(../images/studio/antenna.png);
 	background-color: var(--team-background);
 }
 
 .astronaut::before {
-	background-image: url(../images/main-page/astronaut.png);
+	background-image: url(../images/studio/astronaut.png);
 	background-color: var(--team-background);
 }
 
 .bar-graph::before {
-	background-image: url(../images/main-page/bar-graph.png);
+	background-image: url(../images/studio/bar-graph.png);
 	background-color: var(--team-background);
 }
 
 .stop-watch::before {
-	background-image: url(../images/main-page/stopwatch.png);
+	background-image: url(../images/studio/stopwatch.png);
 	background-color: var(--team-background);
 }
 
