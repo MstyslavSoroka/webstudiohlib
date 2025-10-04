@@ -1,10 +1,11 @@
 :root {
-	--header-background: rgba(236, 236, 236, 1);
+	--header-bg: rgba(236, 236, 236, 1);
 	--footer-text: rgba(255, 255, 255, 0.6);
-	--footer-background: rgba(47, 48, 58, 1);
+	--footer-bg: rgba(47, 48, 58, 1);
 	--brand-color: rgba(33, 150, 243, 1);
+	--btn-hover: rgba(24, 140, 232, 1);
 	--about-us: rgba(255, 255, 255, 1);
-	--team-background: rgba(245, 244, 250, 1);
+	--team-bg: rgba(245, 244, 250, 1);
 	--secondary-color: rgba(117, 117, 117, 1);
 	--accent-color: rgba(0, 0, 0, 1);
 	--titles-color: rgba(33, 33, 33, 1);
@@ -41,14 +42,10 @@ ul {
 	font-weight: 700;
 }
 
-.animation {
+.anim {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-duration: 200ms;
 	transition-property: color, background-color, fill, box-shadow, opacity;
-}
-
-.header .animation {
-	transition-duration: 300ms;
 }
 
 .container {
@@ -113,9 +110,9 @@ ul {
 	position: relative;
 }
 
-.current-page:hover::after {
+.current-page::after {
 	border-radius: 2px;
-	top: 43px;
+	top: 41px;
 	width: 48px;
 	background-color: var(--brand-color);
 	height: 4px;
@@ -124,7 +121,8 @@ ul {
 	display: inline-block;
 	left: 0;
 }
-.portfolio-current-page:hover::after {
+
+.portfolio-current-page::after {
 	width: 78px;
 	height: 4px;
 	display: inline-block;
@@ -163,14 +161,14 @@ ul {
 	color: var(--secondary-color);
 	gap: 10px;
 }
+
 .hero {
 	padding-bottom: 200px;
-	background: linear-gradient(
-			to right,
-			var(--hero-overlay),
-			var(--hero-overlay)
-		),
-		url(../images/studio/hero-bg.jpg) center / cover no-repeat;
+	background: linear-gradient(var(--hero-overlay)),
+		url(../images/studio/hero-bg.jpg);
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
 	padding-top: 200px;
 }
 
@@ -188,11 +186,11 @@ ul {
 	letter-spacing: 0.06em;
 }
 
-.hero-button {
+.hero-btn {
 	padding: 10px 32px;
 	background-color: var(--brand-color);
 	color: var(--about-us);
-	border-width: 0;
+	border: none;
 	border-radius: 4px;
 	font-weight: 700;
 	letter-spacing: 0.06em;
@@ -200,6 +198,11 @@ ul {
 	font-size: 16px;
 	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
 	font-family: var(--main-font);
+}
+
+.hero-btn:hover {
+	background-color: var(--btn-hover);
+	cursor: pointer;
 }
 
 .backdrop {
@@ -210,8 +213,7 @@ ul {
 	left: 0;
 	position: fixed;
 	background-color: rgba(0, 0, 0, 0.2);
-	transition: transform 1000ms cubic-bezier(0.68, -0.55, 0.27, 1.55),
-		opacity 1000ms ease;
+	transition: transform 1000ms ease-in, opacity 1000ms ease;
 }
 
 .backdrop.is-hidden {
@@ -232,7 +234,7 @@ ul {
 	padding: 40px;
 	background-color: var(--about-us);
 	transform: translate(-50%, -50%) scale(1);
-	box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 	border-radius: 4px;
 }
 
@@ -274,6 +276,7 @@ ul {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	align-items: center;
 }
 
 .modal-label {
@@ -284,6 +287,7 @@ ul {
 	text-align: left;
 	font-size: 12px;
 	letter-spacing: 0.01em;
+	width: 100%;
 }
 
 .modal-input {
@@ -299,7 +303,7 @@ ul {
 	border-color: var(--brand-color);
 }
 
-.modal-input:focus + .modal-input-icon {
+.modal-input:focus+.modal-input-icon {
 	fill: var(--brand-color);
 }
 
@@ -359,26 +363,25 @@ ul {
 	text-decoration: underline;
 }
 
-.modal-button {
+.modal-btn {
 	margin-top: 30px;
 	background-color: var(--brand-color);
 	border-radius: 4px;
-	border: 0;
-	padding: 10px 52px;
+	border: none;
+	padding: 15px 52px;
 	color: var(--about-us);
 	font-size: 16px;
-	line-height: 30px;
-	letter-spacing: 0.06em;
 	font-weight: 700;
 	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
 	font-family: var(--main-font);
+
 }
 
-.is-hidden .modal {
-	transform: translate(-50%, -50%) scale(0);
-	transition: transform 1000ms cubic-bezier(0.68, -0.55, 0.27, 1.55),
-		opacity 1000ms ease;
+.modal-btn:hover {
+	background-color: var(--btn-hover);
+	cursor: pointer;
 }
+
 
 .details {
 	padding-top: 94px;
@@ -394,41 +397,20 @@ ul {
 	gap: 30px;
 }
 
-.details-title::before {
-	display: block;
-	background-size: 70px;
-	margin-bottom: 30px;
-	width: 270px;
-	background-repeat: no-repeat;
+
+.details-img-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	height: 120px;
-	content: '';
-	background-position: center;
+	background-color: var(--team-bg);
 }
 
-.antena::before {
-	background-image: url(../images/studio/antenna.png);
-	background-color: var(--team-background);
-}
-
-.astronaut::before {
-	background-image: url(../images/studio/astronaut.png);
-	background-color: var(--team-background);
-}
-
-.bar-graph::before {
-	background-image: url(../images/studio/bar-graph.png);
-	background-color: var(--team-background);
-}
-
-.stop-watch::before {
-	background-image: url(../images/studio/stopwatch.png);
-	background-color: var(--team-background);
-}
 
 .details-title {
 	color: var(--titles-color);
 	font-weight: 700;
-
+	padding-top: 30px;
 	font-size: 14px;
 	text-transform: uppercase;
 	padding-bottom: 10px;
@@ -487,7 +469,7 @@ ul {
 }
 
 .team {
-	background-color: var(--team-background);
+	background-color: var(--team-bg);
 	padding-bottom: 94px;
 	padding-top: 94px;
 }
@@ -596,7 +578,7 @@ ul {
 }
 
 .footer {
-	background-color: var(--footer-background);
+	background-color: var(--footer-bg);
 	padding-top: 60px;
 	padding-bottom: 60px;
 }
@@ -762,7 +744,7 @@ ul {
 	padding: 6px 22px;
 	text-align: center;
 	border-radius: 4px;
-	background-color: var(--team-background);
+	background-color: var(--team-bg);
 	font-weight: 500;
 	border-width: 0;
 	font-size: 16px;
@@ -790,10 +772,12 @@ ul {
 	background-color: var(--about-us);
 	flex-basis: calc((100% - 60px) / 3);
 	text-align: start;
+	transition: box-shadow 0.3s ease-in-out;
+
 }
 
 .portfolio-item:hover {
-	box-shadow: 1px 4px 6px 0 rgba(0, 0, 0, 0.16), 0 4px 4px 0 rgba(0, 0, 0, 0.06);
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .overlay-wrapper {
@@ -806,17 +790,10 @@ ul {
 }
 
 .portfolio-overlay {
-	transform: translateY(100%);
-	transition-duration: 0.3s;
 	opacity: 0;
 	padding: 63px 24px;
-	background-image: linear-gradient(
-		to top,
-		rgba(33, 150, 243, 0.9),
-		rgba(33, 150, 243, 0.9)
-	);
-	transition-property: transform;
-	transition-timing-function: linear;
+	background-image: linear-gradient(rgba(33, 150, 243, 0.9));
+	transition: opacity 0.3s ease-in-out;
 	position: absolute;
 }
 
@@ -828,7 +805,6 @@ ul {
 
 .portfolio-item:hover .portfolio-overlay {
 	opacity: 1;
-	transform: translateY(0%);
 }
 
 .portfolio-title {
